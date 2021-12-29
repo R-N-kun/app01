@@ -1,24 +1,8 @@
-# - *- coding: utf- 8 - *-
-from telegram.ext import Updater, CommandHandler
-
-def start(bot, update):
-  update.message.reply_text("I'm a bot, Nice to meet you!")
-
+# coding: utf-8
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
 def main():
-  # Create Updater object and attach dispatcher to it
-  updater = Updater("5029994413:AAFlqFJDWGLWPs30_lZFkmC7EJt5M4wWyk8")
-  dispatcher = updater.dispatcher
-  print("Bot started")
-
-  # Add command handler to dispatcher
-  start_handler = CommandHandler('start',start)
-  dispatcher.add_handler(start_handler)
-
-  # Start the bot
-  updater.start_polling()
-
-  # Run the bot until you press Ctrl-C
-  updater.idle()
-
-if __name__ == '__main__':
-  main()
+    return "Hello world!"
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port="8000")
